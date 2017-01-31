@@ -46,3 +46,6 @@ RUN apk add --no-cache --virtual .fetch-deps \
     cd / && \
     apk del .fetch-deps .build-deps && \
     rm -rf $BUILD_DIR
+
+LABEL maintainer="King Chung Huang <kchuang@ucalgary.ca>" \
+      org.label-schema.vcs-url="https://github.com/ucalgary/docker-python-librdkafka"
