@@ -19,7 +19,7 @@ RUN apk add --no-cache --virtual .fetch-deps \
       --directory "$BUILD_DIR/$LIBRDKAFKA_NAME-$LIBRDKAFKA_VER" \
       --strip-components 1 && \
 \
-		apk add --no-cache --virtual .build-deps \
+    apk add --no-cache --virtual .build-deps \
       bash \
       g++ \
       openssl-dev \
@@ -27,11 +27,11 @@ RUN apk add --no-cache --virtual .fetch-deps \
       musl-dev \
       zlib-dev && \
 \
-  	cd "$BUILD_DIR/$LIBRDKAFKA_NAME-$LIBRDKAFKA_VER" && \
-  	./configure \
-  	  --prefix=/usr && \
-  	make -j "$(getconf _NPROCESSORS_ONLN)" && \
-  	make install && \
+    cd "$BUILD_DIR/$LIBRDKAFKA_NAME-$LIBRDKAFKA_VER" && \
+    ./configure \
+      --prefix=/usr && \
+    make -j "$(getconf _NPROCESSORS_ONLN)" && \
+    make install && \
 \
     runDeps="$( \
       scanelf --needed --nobanner --recursive /usr/local \
