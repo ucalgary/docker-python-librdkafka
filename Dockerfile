@@ -1,7 +1,7 @@
 FROM python:3.6.2-alpine3.6
 
 ARG LIBRDKAFKA_NAME="librdkafka"
-ARG LIBRDKAFKA_VER="0.9.5"
+ARG LIBRDKAFKA_VER="0.11.0"
 
 # Install librdkafka
 RUN apk add --no-cache --virtual .fetch-deps \
