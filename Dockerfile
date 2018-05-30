@@ -1,5 +1,5 @@
 FROM python:3.6.5-alpine3.7
-
+  
 ARG LIBRDKAFKA_NAME="librdkafka"
 ARG LIBRDKAFKA_VER="0.11.4"
 
@@ -7,11 +7,12 @@ ARG LIBRDKAFKA_VER="0.11.4"
 RUN apk add --no-cache --virtual .fetch-deps \
       ca-certificates \
       libressl \
+      curl \
       tar && \
 \
     BUILD_DIR="$(mktemp -d)" && \
 \
-    wget -O "$BUILD_DIR/$LIBRDKAFKA_NAME.tar.gz" "https://github.com/edenhill/librdkafka/archive/v$LIBRDKAFKA_VER.tar.gz" && \
+    curl -sLo "$BUILD_DIR/$LIBRDKAFKA_NAME.tar.gz" "https://github.com/edenhill/librdkafka/archive/v$LIBRDKAFKA_VER.tar.gz" && \
     mkdir -p $BUILD_DIR/$LIBRDKAFKA_NAME-$LIBRDKAFKA_VER && \
     tar \
       --extract \
